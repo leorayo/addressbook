@@ -4,7 +4,7 @@
     Author     : Rayo
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="user" class="edu.acc.capstone.addressbook.User" scope="session"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,8 +33,6 @@ body {
   margin: 0 auto 0 auto;
  text-align:left;}
 
-
-/* A Free Design by Bryant Smith (bryantsmith.com) */
 
 html, body {
 text-align: center;
@@ -196,9 +194,7 @@ font-size:9px;
 color:#2A2A2A;
 padding-top:25px;
 }
-
-   
-    
+  
 </style>
 
 </head>
@@ -210,13 +206,12 @@ padding-top:25px;
         	<h1>Welcome ${user.userName}</h1>
             <h2>Your Personal Address Book</h2>
             
-      </div>
-  <div id="bar">
+        </div>
+    <div id="bar">
         	
             <div class="link"><a href="logout.jsp">Logout</a></div>
             
-            
-      </div>
+    </div>
         <div class="contentTitle"><h1>What would you like to do?</h1></div>
         <div class="contentText">
             <form method="POST" action="WorkServlet">
@@ -227,17 +222,16 @@ padding-top:25px;
                 
                 First Name: <input type="text" id="firstName" name="firstName" placeholder="First Name" >
                 <br />
-                Last Name: <input type="lastName" id="lastName" name="lastName" placeholder="Last Name"> 
+                Last Name: <input type="text" id="lastName" name="lastName" placeholder="Last Name">
                 <br />
-                <input type="checkbox" name="search" value="search"> Search for this person</input>
+                <input type="checkbox" name="search" value="search"> Search for this person
                 <br />
-                <input type="checkbox" name="delete" value="delete"> Delete this person</input>
+                <input type="checkbox" name="delete" value="delete"> Delete this person
                 <br />
-                <input type="checkbox" name="add" value="add"> Add a new person</input>
+                <input type="checkbox" name="add" value="add"> Add a new person
                 <br />
                 <input type="submit" value="Submit">
-            </form>
-          
+            </form>   
           
         </div>
         <div class="contentTitle"><h1></h1></div>

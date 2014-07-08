@@ -16,8 +16,8 @@ public class Validator {
     private boolean check;
     private User current = new User();
     
-    public boolean validate( User user ) {
-        ArrayList<User> list = ListUsers.getUserList();
+    public boolean validate( User user, ArrayList<User> list ) {
+        
         Iterator<User> itr = list.iterator();
             while ( itr.hasNext() ) {
                 User element = itr.next();

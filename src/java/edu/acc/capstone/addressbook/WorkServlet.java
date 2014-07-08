@@ -10,7 +10,6 @@ import java.io.*;
 import java.util.*;
 import javax.servlet.http.HttpSession;
 import java.util.*;
-//import edu.acc.j2ee.crapsv3.PlayerDAO;
 
 public class WorkServlet extends HttpServlet {
     @Override
@@ -31,6 +30,7 @@ public class WorkServlet extends HttpServlet {
         
         User user = (User)request.getSession().getAttribute( "user" );
         
+        
         if ( search != null ) {
            Person person = new Person();
            PersonSearch myPerson = new PersonSearch();
@@ -38,10 +38,12 @@ public class WorkServlet extends HttpServlet {
            if ( person == null ) {
                request.setAttribute( "notFound", firstName + lastName + " wast not found!");
                request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+               return;
            }
            else {
            session.setAttribute( "person", person );
            request.getRequestDispatcher( "display.jsp" ).forward( request, response );
+           return;
            }
            
         }
@@ -54,10 +56,12 @@ public class WorkServlet extends HttpServlet {
            request.setAttribute( "delete", person.getFirstName() + " was deleted" );
            session.setAttribute( "user", user );
            request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+           return;
         }
         else if ( add != null ) {
             session.setAttribute( "user", user );
             request.getRequestDispatcher( "addPerson.jsp" ).forward( request, response );
+            return;
         }
         
         

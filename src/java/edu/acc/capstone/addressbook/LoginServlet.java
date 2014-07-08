@@ -23,32 +23,40 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
+        
         
         String userName = request.getParameter( "userName" );
         String password = request.getParameter( "password" ) ;
         String register = request.getParameter( "register" );
         
-        if ( register != null ) request.getRequestDispatcher( "register.jsp" ).forward( request, response );
+        if ( register != null ) {
+            request.getRequestDispatcher( "register.jsp" ).forward( request, response );
+            return;
+        }
         else {
         
             User user = new User();
             user.setUserName( userName );
             user.setPassword( password );
-        
+            
+           // ArrayList<User> list = (ArrayList<User>)request.getSession().getAttribute( "listUser" );
+            ArrayList<User> list = new ArrayList<User>();
             Validator validate = new Validator();
-            boolean check = validate.validate( user );
+            boolean check = validate.validate( user, list );
             
             
             if ( check == true ) {
-            user = validate.getCurrentUser();   
+            user = validate.getCurrentUser(); 
+            HttpSession session = request.getSession();
             session.setAttribute( "user", user );
             request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+            return;
             }
         
             else {
            request.setAttribute( "invalid", "you are not register" );
            request.getRequestDispatcher( "register.jsp" ).forward( request, response );
+           return;
             }                 
         }
     }

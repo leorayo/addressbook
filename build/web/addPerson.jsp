@@ -35,8 +35,6 @@ body {
  text-align:left;}
 
 
-/* A Free Design by Bryant Smith (bryantsmith.com) */
-
 html, body {
 text-align: center;
 }

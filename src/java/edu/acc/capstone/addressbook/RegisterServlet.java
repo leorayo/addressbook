@@ -25,21 +25,26 @@ public class RegisterServlet extends HttpServlet {
         user.setUserName( userName );
         user.setPassword( password );
         
+        ArrayList<User> list = ListUsers.getUserList();
         Validator validate = new Validator();
-        boolean check = validate.validate( user );
+        boolean check = validate.validate( user, list );
         
         
         
         if ( check == true ) {
-            session.setAttribute( "user", user );
+            session.setAttribute( "user", user);
             request.setAttribute( "invalid", "The user name" + user.getUserName() + " is already taken" );
             request.getRequestDispatcher( "register.jsp" ).forward( request, response );
+            return;
         }
         
         else { 
             ListUsers.updateUserList( user );
+            list = ListUsers.getUserList();
+            session.setAttribute( "listUser", list);
             session.setAttribute( "user", user );
             request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+            return;
         }
     }
 }

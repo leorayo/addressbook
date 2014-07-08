@@ -4,13 +4,7 @@
     Author     : Rayo
 --%>
 
-<html>
-	<head>
        <% 
 		   session.invalidate();
+           response.sendRedirect( "login.jsp" );
 		%>
-        <meta http-equiv="refresh" content="0; url=login.jsp">
-    </head>
-	<body>
-	</body>
-</html>

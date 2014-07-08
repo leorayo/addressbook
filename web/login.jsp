@@ -162,7 +162,7 @@ input[type=submit]:active {
        
  <script type="text/javascript" language="javascript">
 function createPopup(){
-window.open('http://localhost:8080/WebApplication1/about.html','About','width=750,height=650,left=100,top=150');
+window.open('http://localhost:8080/addressbook/about.html','About','width=750,height=650,left=100,top=150');
 return false;
 }
 </script>  
