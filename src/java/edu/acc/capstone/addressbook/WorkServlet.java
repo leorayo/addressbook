@@ -18,12 +18,12 @@ public class WorkServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        String firstName = request.getParameter( "firstname" );
+        String firstName = request.getParameter( "firstName" );
         String lastName = request.getParameter( "lastName" );
         String search = request.getParameter( "search" );
         String delete = request.getParameter( "delete" );
         String add = request.getParameter( "add" );
-        String address = request.getParameter( "address");
+        String address = request.getParameter( "address" );
         String emailAddress = request.getParameter( "emailAddress" );
         String phoneNumber = request.getParameter( "phoneNumber" );
         String birthday = request.getParameter( "birthday" );
@@ -36,7 +36,7 @@ public class WorkServlet extends HttpServlet {
            PersonSearch myPerson = new PersonSearch();
            person = myPerson.search( firstName, lastName, user );
            if ( person == null ) {
-               request.setAttribute( "notFound", firstName + lastName + " wast not found!");
+               request.setAttribute( "notFound", firstName + " "+ lastName + " is not in your addressbook" );
                request.getRequestDispatcher( "content.jsp" ).forward( request, response );
                return;
            }
@@ -51,12 +51,20 @@ public class WorkServlet extends HttpServlet {
            Person person = new Person();
            PersonSearch myPerson = new PersonSearch();
            person = myPerson.search( firstName, lastName, user );
-           ArrayList<Person> personList = user.getPersonList();
-           user.deletePerson( person );
-           request.setAttribute( "delete", person.getFirstName() + " was deleted" );
-           session.setAttribute( "user", user );
-           request.getRequestDispatcher( "content.jsp" ).forward( request, response );
-           return;
+           //ArrayList<Person> personList = user.getPersonList();
+           if ( person == null ) {
+                request.setAttribute( "notFound", firstName + " " + lastName + " is not in your addressbook." );
+                session.setAttribute( "user", user );
+                request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+                return;
+           }
+           else {
+                user.deletePerson( person );
+                request.setAttribute( "deleted", firstName + " " + lastName+ " was deleted." );
+                session.setAttribute( "user", user );
+                request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+                return;
+           }
         }
         else if ( add != null ) {
             session.setAttribute( "user", user );
@@ -73,7 +81,7 @@ public class WorkServlet extends HttpServlet {
         addPerson.setPhoneNumber( phoneNumber );
         addPerson.setBirthday( birthday );
         user.setPersonList( addPerson );
-        request.setAttribute( "add", addPerson.getFirstName() + addPerson.getLastName() + " was added" );
+        request.setAttribute( "add", firstName + lastName + " was added." );
         session.setAttribute( "user", user );
         session.setAttribute( "person", addPerson );
         request.getRequestDispatcher( "display.jsp" ).forward( request, response );

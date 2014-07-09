@@ -1,16 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<link rel="stylesheet" type="text/css" href="css/about.css">  
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+/* 
+    Created on : Jul 9, 2014, 7:48:24 AM
+    Author     : Rayo
+*/
 
-<title>About</title>
-
-</head>
-
-    <style>
-      
-      html, body {
+html, body {
 text-align: center;
 }
 p {text-align: left;}
@@ -190,43 +183,3 @@ font-size:9px;
 color:#2A2A2A;
 padding-top:25px;
 }
-  
-        
-    </style>
-    
-    
-<body>
-    <div id="page">
-		
-        <div id="header">
-        	<h1>About</h1>
-            <h2>Personal Address book</h2>
-            
-      </div>
-  <div id="bar">
-        	
-            
-      </div>
-        <div class="contentTitle"><h1>What is it?</h1></div>
-        <div class="contentText">
-          <p>Personal address book is an application that helps
-             you store information of friends family or other 
-             people that you want to keep information about. </p>
-          <p>&nbsp;</p>
-          <p>Personal address book was created in July 2014 by Leobardo Rayo
-             who is a Oracle java certified programer.</p>
-          <p>&nbsp;</p>
-          
-        </div>
-        <div class="contentTitle"><h1>Leobardo Rayo</h1></div>
-        <div class="contentText">
-          <p>-Born: January 18,1986
-          <br />-Associate degree in computer science
-          <br />-Oracle java certified associate</p>
-          <p>&nbsp;</p>
-        </div>
-          
-</div>
-        <div id="footer"><a href=""></a><a href=""></a></div>
-</body>
-</html> 

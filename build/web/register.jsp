@@ -105,9 +105,9 @@ input[type=password]:focus {
 }
 a:link {
     position: absolute; 
-    bottom: 80px; 
-    right: 600px; 
-    
+    top: 20px;
+    right: 20px;
+    text-align: right;
     color: #FFFFFF;
     
 }
@@ -166,27 +166,37 @@ window.open('http://localhost:8080/WebApplication1/about.html','About','width=75
 return false;
 }
 </script>  
-       
-    </head>
+
+<script type="text/javascript" language="javascript">
+function createPopup(){
+window.open('http://localhost:8080/addressbook/about.html','About','width=750,height=650,left=100,top=150');
+return false;
+}
+</script>         
+
+</head>
 
 <body>
     <!-- Begin Page Content -->
-    <p>Welcome please register for an account</p>
-    <p><font color="red">${requestScope.invalid}</font></p> 
+    <p><font color="red" size="4">${requestScope.invalid}</font></p> 
+    <p>Pease register for an account</p>
     
     <div id="container">
         <form method="POST" action="RegisterServlet">
             <label for="username">Username:</label>
-            <input type="text" id="userName" name="username" placeholder="choose a username">
+            <input type="text" id="UserName" name="userName" value="${requestScope.userName}" placeholder="choose a username">
+            <font color="red" size="2"><strong>${requestScope.noUserName}</strong></font>   
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="choose a password">
+            <input type="password" id="Password" name="password" value="${requestScope.password}" placeholder="choose a password">
+            <font color="red" size="2"><strong>${requestScope.noPassword}</strong></font>    
             <div id="lower">
-                <input type="checkbox" name="register" value="register"><label class="check" for="checkbox">I dont have an account</label>
-                <input type="submit" value="Register">
+                
+                <input type="checkbox" name="haveAccount" value="haveAccount"><label class="check" for="checkbox">I have an account.</label>
+                <input type="submit" value="Enter">
             </div><!--/ lower-->
         </form> 
     </div><!--/ container-->
-    <a href="login.jsp">I already have an account!</a>
+    <a href="javascript:void(0)" onclick="javascript:createPopup();">About</a>
     <!-- End Page Content -->
 </body>
 </html>

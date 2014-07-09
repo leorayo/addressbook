@@ -215,7 +215,7 @@ padding-top:25px;
             <div class="link"><a href="content.jsp">Home</a></div>
             
       </div>
-        <div class="contentTitle"><h1>${person.firstName} ${person.lastName} information</h1></div>
+        <div class="contentTitle"><h1>${person.firstName} ${person.lastName}'s information</h1></div>
         <div class="contentText">
             
             First Name: ${person.firstName}

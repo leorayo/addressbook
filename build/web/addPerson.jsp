@@ -220,17 +220,17 @@ padding-top:25px;
             <form method="POST" action="WorkServlet">
                 
                 
-                First Name: <input type="text" id="firstName" name="firstName" placeholder="First Name" >
+                First Name: <input type="text" id="FirstName" name="firstName" placeholder="First Name" >
                 <br />
-                Last Name: <input type="text" id="lastName" name="lastName" placeholder="Last Name"> 
+                Last Name: <input type="text" id="LastName" name="lastName" placeholder="Last Name"> 
                 <br />
-                Address: <input type="text" id="address" name="address" placeholder="Enter the address"> 
+                Address: <input type="text" id="Address" name="address" placeholder="Enter the address"> 
                 <br />
-                Email: <input type="text" id="emailAddress" name="emailAddress" placeholder="Enter email address"> 
+                Email: <input type="text" id="EmailAddress" name="emailAddress" placeholder="Enter email address"> 
                 <br />
-                Phone Number: <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number"> 
+                Phone Number: <input type="text" id="PhoneNumber" name="phoneNumber" placeholder="Enter phone number"> 
                 <br />
-                Birthday: <input type="text" id="birthday" name="birthday" placeholder="Enter the birthday">
+                Birthday: <input type="text" id="Birthday" name="birthday" placeholder="Enter the birthday">
                 <br />
                 <input type="submit" value="Add Person">
             </form>

@@ -4,7 +4,7 @@
     Author     : Rayo
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<jsp:useBean id="user" class="edu.acc.capstone.addressbook.User" scope="session"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -217,9 +217,9 @@ padding-top:25px;
             <form method="POST" action="WorkServlet">
                 
                 <h2><font color="red">${requestScope.deleted}</font></h2>
-                <h2><font color="red">${requestScope.added}</font></h2>
+                <h2><font color="red">${requestScope.add}</font></h2>
                 <h2><font color="red">${requestScope.notFound}</font></h2>
-                
+                <br />
                 First Name: <input type="text" id="firstName" name="firstName" placeholder="First Name" >
                 <br />
                 Last Name: <input type="text" id="lastName" name="lastName" placeholder="Last Name">

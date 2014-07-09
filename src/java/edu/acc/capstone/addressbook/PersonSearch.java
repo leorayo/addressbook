@@ -6,11 +6,15 @@ package edu.acc.capstone.addressbook;
 import java.util.*;
         
 public class PersonSearch {
-    private Person person = new Person();
+    private Person person;
     
     public Person search( String firstName, String lastName, User user) {
-       ArrayList<Person> list = user.getPersonList();
-       Iterator<Person> itr = list.iterator();
+       ArrayList<Person> personList = user.getPersonList();
+       
+       if( personList == null)
+                   return null;
+       
+       Iterator<Person> itr = personList.iterator();
             while ( itr.hasNext() ) {
                 Person element = itr.next();
                 if ( element.getFirstName().equals( firstName ) && element.getLastName().equals( lastName ) ) {

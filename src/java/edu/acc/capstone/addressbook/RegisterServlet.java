@@ -20,31 +20,65 @@ public class RegisterServlet extends HttpServlet {
         
         String userName = request.getParameter( "userName" );
         String password = request.getParameter( "password" ) ;
+        String haveAccount = request.getParameter( "haveAccount" );
         
-        User user = new User();
-        user.setUserName( userName );
-        user.setPassword( password );
-        
-        ArrayList<User> list = ListUsers.getUserList();
-        Validator validate = new Validator();
-        boolean check = validate.validate( user, list );
-        
-        
-        
-        if ( check == true ) {
-            session.setAttribute( "user", user);
-            request.setAttribute( "invalid", "The user name" + user.getUserName() + " is already taken" );
+        if( ( haveAccount.equals("") || haveAccount.equals( null )) && ( password.equals( "" ) || password.equals( null )) && ( userName.equals( "" ) || userName.equals( null ) ) ) {
+            request.setAttribute( "noUserName", "You must enter a username!" );
+            request.setAttribute( "noPassword", "You must enter a password!" );
+            request.getRequestDispatcher( "register.jsp" ).forward( request, response );
+            return;
+        }
+        if( ( haveAccount.equals("") || haveAccount.equals( null )) && ( userName.equals( "" ) || userName.equals( null ) ) ) {
+            request.setAttribute( "noUserName", "You must enter a username!" );
+            request.setAttribute( "password", password );
             request.getRequestDispatcher( "register.jsp" ).forward( request, response );
             return;
         }
         
-        else { 
-            ListUsers.updateUserList( user );
-            list = ListUsers.getUserList();
-            session.setAttribute( "listUser", list);
-            session.setAttribute( "user", user );
-            request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+        if ( ( haveAccount.equals("") || haveAccount.equals( null )) && ( password.equals( "" ) || password.equals( null ) ) ) {
+            request.setAttribute( "noPassword", "You must enter a password!" );
+            request.setAttribute( "userName", userName );
+            request.getRequestDispatcher( "register.jsp" ).forward( request, response );
             return;
+        }
+        
+        if ( haveAccount != null ) {
+            request.getRequestDispatcher( "login.jsp" ).forward( request, response );
+            return;
+        }
+        else {
+        
+            User user = new User();
+            user.setUserName( userName );
+            user.setPassword( password );
+        
+       
+              
+        
+            ServletContext context = request.getServletContext();
+            ListUsers listOfUsers = (ListUsers)context.getAttribute( "listOfUsers");
+
+            Validator validate = new Validator();
+            boolean check = validate.validateUser( user, listOfUsers );     
+        
+            if ( check == true ) {
+                session.setAttribute( "user", user);
+                request.setAttribute( "invalid", "The user name " + user.getUserName() + " is already taken." );
+                request.getRequestDispatcher( "register.jsp" ).forward( request, response );
+                return;
+            }
+        
+            else { 
+            //ListUsers.updateUserList( user );
+                listOfUsers.updateUserList( user );
+            //list = list.getUserList();
+            //session.setAttribute( "listUser", list);
+                context.setAttribute( "list", listOfUsers);
+            //this.getServletContext().setAttribute( "list", list );
+                session.setAttribute( "user", user );
+                request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+                return;
+            }
         }
     }
 }

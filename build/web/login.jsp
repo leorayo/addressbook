@@ -105,8 +105,8 @@ input[type=password]:focus {
 }
 a:link {
     position: absolute; 
-    bottom: 20px; 
-    right: 1300px; 
+    top: 20px;
+    right: 20px;
     text-align: right;
     color: #FFFFFF;
     
@@ -160,7 +160,7 @@ input[type=submit]:active {
 }
 </style> 
        
- <script type="text/javascript" language="javascript">
+<script type="text/javascript" language="javascript">
 function createPopup(){
 window.open('http://localhost:8080/addressbook/about.html','About','width=750,height=650,left=100,top=150');
 return false;
@@ -176,12 +176,14 @@ return false;
     <div id="container">
         <form method="POST" action="LoginServlet">
             <label for="username">Username:</label>
-            <input type="text" id="userName" name="userName" placeholder="User Name">
+            <font color="red" size="2"><strong>${requestScope.noUserName}</strong></font>
+            <input type="text" id="Username" name="userName" value="${requestScope.userName}" placeholder="User Name">
             <label for="password">Password:</label>
-            <input type="text" id="password" name="password" placeholder="Password">
+            <font color="red" size="2"><strong>${requestScope.noPassword}</strong></font>
+            <input type="text" id="Password" name="password" value="${requestScope.password}" placeholder="Password">
             <div id="lower">
-                <input type="checkbox" name="register" value="register"><label class="check" for="checkbox">I dont have an account</label>
-                <input type="submit" value="Login">
+                <input type="checkbox" name="register" value="register"><label class="check" for="checkbox">I don't have an account</label>
+                <input type="submit" value="Enter">
             </div><!--/ lower-->
         </form> 
     </div><!--/ container-->
