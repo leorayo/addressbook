@@ -10,22 +10,22 @@ import java.util.*;
 import javax.servlet.http.HttpSession;
 
 
-public class LoginServlet extends HttpServlet {
+public class DeleteUserServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
           
         String userName = request.getParameter( "userName" );
         String password = request.getParameter( "password" ) ;
-        String register = request.getParameter( "register" );
+        //String register = request.getParameter( "register" );
         
-        if( register == null && password.equals( "" ) && userName.equals( "" ) ) {
+        if( password.equals( "" ) && userName.equals( "" ) ) {
             request.setAttribute( "noUserName", "You must enter a username!" );
             request.setAttribute( "noPassword", "You must enter a password!" );
             request.getRequestDispatcher( "login.jsp" ).forward( request, response );
             return;
         } 
-        if ( register != null && password.equals( "" ) && password.equals( "" ) ) {
+        if ( password.equals( "" ) && password.equals( "" ) ) {
             request.getRequestDispatcher( "register.jsp" ).forward( request, response );
             return;
         } 
@@ -55,19 +55,20 @@ public class LoginServlet extends HttpServlet {
             
             if ( check == true ) {
             user = validate.getCurrentUser(); 
-            HttpSession session = request.getSession();
+           // HttpSession session = request.getSession();
+            listOfUsers.deleteUser( user );
             context.setAttribute( "listOfUsers", listOfUsers );
-            session.setAttribute( "user", user );
-            request.getRequestDispatcher( "content.jsp" ).forward( request, response );
+            request.setAttribute( "deletedUser", "Your account was deleted" );
+            //session.setAttribute( "user", user );
+            request.getRequestDispatcher( "login.jsp" ).forward( request, response );
             return;
             }
         
             else {
-           request.setAttribute( "invalid", "Access denied, you are not registered." );
-           request.getRequestDispatcher( "register.jsp" ).forward( request, response );
+           request.setAttribute( "invalid", "This account is not registered" );
+           request.getRequestDispatcher( "deleteUser.jsp" ).forward( request, response );
            return;
             }                 
         }
     }
 }
-

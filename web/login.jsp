@@ -9,7 +9,6 @@
     <head>
        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
        <title>Login</title> 
-
        
 <style>
 /* Basics */
@@ -126,8 +125,8 @@ input[type=checkbox] {
 }
 .check {
     margin-left: 3px;
-	font-size: 11px;
-    color: #444;
+    font-size: 11px;
+    color: #000000;
     text-shadow: 0 1px 0 #fff;
 }
 input[type=submit] {
@@ -171,7 +170,8 @@ return false;
 
 <body>
     <!-- Begin Page Content -->
-    <p>Welcome to your address book please login</p>
+    <p><font color="red" size="5">${requestScope.deletedUser}</font></p> 
+    <p><font color="blue">Welcome To Your Address Book Please Login</font></p>
     
     <div id="container">
         <form method="POST" action="LoginServlet">
@@ -180,14 +180,15 @@ return false;
             <input type="text" id="Username" name="userName" value="${requestScope.userName}" placeholder="User Name">
             <label for="password">Password:</label>
             <font color="red" size="2"><strong>${requestScope.noPassword}</strong></font>
-            <input type="text" id="Password" name="password" value="${requestScope.password}" placeholder="Password">
+            <input type="password" id="Password" name="password" placeholder="Password">
             <div id="lower">
-                <input type="checkbox" name="register" value="register"><label class="check" for="checkbox">I don't have an account</label>
+                <input type="checkbox" name="register" value="register"><label class="check" for="checkbox"><strong>I don't have an account</strong></label>
                 <input type="submit" value="Enter">
             </div><!--/ lower-->
-        </form> 
+        </form>    
     </div><!--/ container-->
     <a href="javascript:void(0)" onclick="javascript:createPopup();">About</a>
+    
     <!-- End Page Content -->
 </body>
 </html>

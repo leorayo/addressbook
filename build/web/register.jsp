@@ -3,7 +3,6 @@
     Created on : Jul 5, 2014, 10:21:31 PM
     Author     : Rayo
 --%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -126,8 +125,8 @@ input[type=checkbox] {
 }
 .check {
     margin-left: 3px;
-	font-size: 11px;
-    color: #444;
+    font-size: 11px;
+    color: #000000;
     text-shadow: 0 1px 0 #fff;
 }
 input[type=submit] {
@@ -160,13 +159,6 @@ input[type=submit]:active {
 }
 </style> 
        
- <script type="text/javascript" language="javascript">
-function createPopup(){
-window.open('http://localhost:8080/WebApplication1/about.html','About','width=750,height=650,left=100,top=150');
-return false;
-}
-</script>  
-
 <script type="text/javascript" language="javascript">
 function createPopup(){
 window.open('http://localhost:8080/addressbook/about.html','About','width=750,height=650,left=100,top=150');
@@ -178,20 +170,20 @@ return false;
 
 <body>
     <!-- Begin Page Content -->
-    <p><font color="red" size="4">${requestScope.invalid}</font></p> 
-    <p>Pease register for an account</p>
+    <p><font color="red" size="5">${requestScope.invalid}</font></p> 
+    <p><font color="00CC00">Please Register For An Account</font></p>
     
     <div id="container">
         <form method="POST" action="RegisterServlet">
             <label for="username">Username:</label>
-            <input type="text" id="UserName" name="userName" value="${requestScope.userName}" placeholder="choose a username">
-            <font color="red" size="2"><strong>${requestScope.noUserName}</strong></font>   
+            <font color="red" size="2"><strong>${requestScope.noUserName}</strong></font>
+            <input type="text" id="UserName" name="userName" value="${requestScope.userName}" placeholder="Create a username">    
             <label for="password">Password:</label>
-            <input type="password" id="Password" name="password" value="${requestScope.password}" placeholder="choose a password">
-            <font color="red" size="2"><strong>${requestScope.noPassword}</strong></font>    
+            <font color="red" size="2"><strong>${requestScope.noPassword}</strong></font>
+            <input type="password" id="Password" name="password" value="${requestScope.password}" placeholder="Create a password">     
             <div id="lower">
                 
-                <input type="checkbox" name="haveAccount" value="haveAccount"><label class="check" for="checkbox">I have an account.</label>
+                <input type="checkbox" name="haveAccount" value="haveAccount"><label class="check" for="checkbox"><strong>I have an account</strong></label>
                 <input type="submit" value="Enter">
             </div><!--/ lower-->
         </form> 

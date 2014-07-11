@@ -19,6 +19,7 @@ public class PersonSearch {
                 Person element = itr.next();
                 if ( element.getFirstName().equals( firstName ) && element.getLastName().equals( lastName ) ) {
                     person = element;
+                    return person ;
                 }
                 else
                    person =  null;

@@ -3,7 +3,6 @@
     Created on : Jul 6, 2014, 7:26:55 PM
     Author     : Rayo
 --%>
-
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="user" class="edu.acc.capstone.addressbook.User" scope="session"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -171,7 +170,17 @@ color:#030712;
 line-height:30px;
 letter-spacing:-1px;
 }
-
+.userFormNotes
+{
+    
+    text-align:left;
+    color: #c7d0d2;
+    position: absolute;
+    top: 237.5px;
+    left: 350px;
+    
+    
+}
 a
 {
 text-decoration:none;
@@ -217,32 +226,36 @@ padding-top:25px;
       </div>
         <div class="contentTitle"><h1>Please enter the new person's information:</h1></div>
         <div class="contentText">
-            <form method="POST" action="WorkServlet">
+            <form method="POST" action="WorkServlet" id="userNotes">
                 
                 
-                First Name: <input type="text" id="FirstName" name="firstName" placeholder="First Name" >
+                <strong>First Name: </strong><input type="text" id="FirstName" name="firstName" value="${requestScope.personFirstName}" placeholder="First Name" >
                 <br />
-                Last Name: <input type="text" id="LastName" name="lastName" placeholder="Last Name"> 
+                <strong>Last Name: </strong><input type="text" id="LastName" name="lastName" value="${requestScope.personLastName}" placeholder="Last Name"> 
                 <br />
-                Address: <input type="text" id="Address" name="address" placeholder="Enter the address"> 
+                <strong>Address: </strong><input type="text" id="Address" name="address" placeholder="Enter the address"> 
                 <br />
-                Email: <input type="text" id="EmailAddress" name="emailAddress" placeholder="Enter email address"> 
+                <strong>Email: </strong><input type="text" id="EmailAddress" name="emailAddress" placeholder="Enter email address"> 
                 <br />
-                Phone Number: <input type="text" id="PhoneNumber" name="phoneNumber" placeholder="Enter phone number"> 
+                <strong>Phone Number: </strong><input type="text" id="PhoneNumber" name="phoneNumber" placeholder="Enter phone number"> 
                 <br />
-                Birthday: <input type="text" id="Birthday" name="birthday" placeholder="Enter the birthday">
+                <strong>Birthday: </strong><input type="text" id="Birthday" name="birthday" placeholder="Enter the birthday">
                 <br />
+                <input type="hidden" name="addAnewPerson" value="addAnewPerson">
                 <input type="submit" value="Add Person">
-            </form>
-          
-          
+            </form>                
         </div>
         <div class="contentTitle"><h1></h1></div>
-        <div class="contentText">
-          
+        
+        <div class="userFormNotes">
+                <textarea rows="4" cols="30" name="notes" form="userNotes" placeholder="Special notes..."></textarea>
         </div>
-          
+        
+        
 </div>
         <div id="footer"><a href=""></a><a href=""></a></div>
+        
+        
+        
 </body>
 </html> 

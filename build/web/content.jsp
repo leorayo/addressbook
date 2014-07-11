@@ -210,6 +210,7 @@ padding-top:25px;
     <div id="bar">
         	
             <div class="link"><a href="logout.jsp">Logout</a></div>
+            <div class="link"><a href="deleteUser.jsp">Delete my account</a> </div>  
             
     </div>
         <div class="contentTitle"><h1>What would you like to do?</h1></div>
@@ -219,27 +220,37 @@ padding-top:25px;
                 <h2><font color="red">${requestScope.deleted}</font></h2>
                 <h2><font color="red">${requestScope.add}</font></h2>
                 <h2><font color="red">${requestScope.notFound}</font></h2>
+                
+                Number of person's in your address book: ${user.personList.size()}<br />
+                <c:forEach var="person" items="${user.personList}" > 
+                    <b><font color="#600000">${ 1 + user.personList.indexOf(person)}.</b></font> ${person.firstName} ${person.lastName}</b>            
+		</c:forEach>
+                
                 <br />
-                First Name: <input type="text" id="firstName" name="firstName" placeholder="First Name" >
+                First Name: <input type="text" id="firstName" name="firstName" value="${requestScope.firstName}" placeholder="First Name" >
                 <br />
-                Last Name: <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+                Last Name: <input type="text" id="lastName" name="lastName" value="${requestScope.lastName}" placeholder="Last Name">
+                <br />           
+                <h3><font color="red">${requestScope.chooseOption}</font></h3>
+                <input type="radio" name="work" value="search"> Search for this person
                 <br />
-                <input type="checkbox" name="search" value="search"> Search for this person
+                <input type="radio" name="work" value="update"> Update this person
                 <br />
-                <input type="checkbox" name="delete" value="delete"> Delete this person
+                <input type="radio" name="work" value="deleted"> Delete this person
                 <br />
-                <input type="checkbox" name="add" value="add"> Add a new person
+                <input type="radio" name="work" value="add"> Add a new person
                 <br />
+              
                 <input type="submit" value="Submit">
             </form>   
-          
         </div>
+                
         <div class="contentTitle"><h1></h1></div>
         <div class="contentText">
-          
-        </div>
-          
+            
+        </div>   
 </div>
+                
         <div id="footer"><a href=""></a><a href=""></a></div>
 </body>
 </html> 

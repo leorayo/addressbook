@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package edu.acc.capstone.addressbook;
-
 /**
  *
  * @author Rayo
@@ -28,6 +21,7 @@ public class Validator {
                 if ( element.getUserName().equals( user.getUserName() ) && element.getPassword().equals( user.getPassword() ) ) {
                     check = true;
                     current = element;
+                    return check;
                 }
                 else 
                     check = false;
@@ -46,6 +40,7 @@ public class Validator {
                 if ( element.getUserName().equals( user.getUserName() ) ) {
                     check = true;
                     current = element;
+                    return check;
                 }
                 else 
                     check = false;

@@ -218,18 +218,20 @@ padding-top:25px;
         <div class="contentTitle"><h1>${person.firstName} ${person.lastName}'s information</h1></div>
         <div class="contentText">
             
-            First Name: ${person.firstName}
+            <font size="3">First Name: </font><font color="#0000FF"><b>${person.firstName}</b></font>
             <br />
-            Last Name: ${person.lastName}
+            Last Name: <font color="#0000FF"><b>${person.lastName}</b></font>
             <br />
-            Address: ${person.address}
+            Address: <font color="#0000FF"><b>${person.address}</b></font>
             <br />
-            Email Address: ${person.emailAddress}
+            Email Address :<font color="#0000FF"><b>${person.emailAddress}</b></font>
             <br />
-            Phone Number: ${person.phoneNumber}
+            Phone Number: <font color="#0000FF"><b>${person.phoneNumber}</b></font>
             <br />
-            Birthday: ${person.birthday}
-
+            Birthday: <font color="#0000FF"><b>${person.birthday}</b></font>
+            <br />
+            Notes: <font color="#0000FF"><b>${person.notes}</b></font></font>
+            
         </div>
         <div class="contentTitle"><h1></h1></div>
         <div class="contentText">

@@ -29,5 +29,7 @@ public class ListUsers {
     public void updateUserList( User user ) {
         userList.add( user );
     }
-    
+    public void deleteUser( User user ) {
+        userList.remove( user );
+    }
 }

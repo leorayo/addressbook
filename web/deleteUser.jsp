@@ -1,14 +1,13 @@
 <%-- 
-    Document   : register
-    Created on : Jul 5, 2014, 10:21:31 PM
+    Document   : deleteUser
+    Created on : Jul 10, 2014, 8:14:02 AM
     Author     : Rayo
 --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-       <title>Register</title> 
-
+       <title>Login</title> 
        
 <style>
 /* Basics */
@@ -159,36 +158,28 @@ input[type=submit]:active {
 }
 </style> 
        
-<script type="text/javascript" language="javascript">
-function createPopup(){
-window.open('http://localhost:8080/addressbook/about.html','About','width=750,height=650,left=100,top=150');
-return false;
-}
-</script>         
-
-</head>
+    </head>
 
 <body>
     <!-- Begin Page Content -->
+    <p><font color="FF9900"><strong>Are you sure you want to delete your account? You will loose all your information!</strong></font></p>
     <p><font color="red" size="5">${requestScope.invalid}</font></p> 
-    <p><font color="00CC00">Please Register For An Account</font></p>
     
     <div id="container">
-        <form method="POST" action="RegisterServlet">
-            <label for="username">Username:</label>
+        <form method="POST" action="DeleteUserServlet">
+            <label for="username">Confirm your username:</label>
             <font color="red" size="2"><strong>${requestScope.noUserName}</strong></font>
-            <input type="text" id="UserName" name="userName" value="${requestScope.userName}" placeholder="Create a username">    
-            <label for="password">Password:</label>
+            <input type="text" id="Username" name="userName" value="${requestScope.userName}" placeholder="Confirm Your Password">
+            <label for="password">Confirm your password:</label>
             <font color="red" size="2"><strong>${requestScope.noPassword}</strong></font>
-            <input type="password" id="Password" name="password" value="${requestScope.password}" placeholder="Create a password">     
-            <div id="lower">
-                
-                <input type="checkbox" name="haveAccount" value="haveAccount"><label class="check" for="checkbox"><strong>I have an account</strong></label>
+            <input type="password" id="Password" name="password" placeholder="Confirm Your Password">
+            <div id="lower">            
                 <input type="submit" value="Enter">
             </div><!--/ lower-->
-        </form> 
+        </form>    
     </div><!--/ container-->
-    <a href="javascript:void(0)" onclick="javascript:createPopup();">About</a>
+    <a href="login.jsp">KEEP MY ACCOUNT</a>
+    
     <!-- End Page Content -->
 </body>
 </html>

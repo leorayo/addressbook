@@ -22,28 +22,25 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter( "password" ) ;
         String haveAccount = request.getParameter( "haveAccount" );
         
-        if( ( haveAccount.equals("") || haveAccount.equals( null )) && ( password.equals( "" ) || password.equals( null )) && ( userName.equals( "" ) || userName.equals( null ) ) ) {
+        if( haveAccount == null && password.equals( "" ) && userName.equals( "" ) ) {
             request.setAttribute( "noUserName", "You must enter a username!" );
             request.setAttribute( "noPassword", "You must enter a password!" );
             request.getRequestDispatcher( "register.jsp" ).forward( request, response );
             return;
-        }
-        if( ( haveAccount.equals("") || haveAccount.equals( null )) && ( userName.equals( "" ) || userName.equals( null ) ) ) {
+        } 
+        if ( haveAccount != null && password.equals( "" ) && password.equals( "" ) ) {
+            request.getRequestDispatcher( "login.jsp" ).forward( request, response );
+            return;
+        } 
+        if( userName.equals( "" ) )  {         
             request.setAttribute( "noUserName", "You must enter a username!" );
-            request.setAttribute( "password", password );
             request.getRequestDispatcher( "register.jsp" ).forward( request, response );
             return;
-        }
-        
-        if ( ( haveAccount.equals("") || haveAccount.equals( null )) && ( password.equals( "" ) || password.equals( null ) ) ) {
+        }  
+        if( password.equals( "" ) ) {
             request.setAttribute( "noPassword", "You must enter a password!" );
             request.setAttribute( "userName", userName );
             request.getRequestDispatcher( "register.jsp" ).forward( request, response );
-            return;
-        }
-        
-        if ( haveAccount != null ) {
-            request.getRequestDispatcher( "login.jsp" ).forward( request, response );
             return;
         }
         else {
@@ -51,10 +48,7 @@ public class RegisterServlet extends HttpServlet {
             User user = new User();
             user.setUserName( userName );
             user.setPassword( password );
-        
-       
               
-        
             ServletContext context = request.getServletContext();
             ListUsers listOfUsers = (ListUsers)context.getAttribute( "listOfUsers");
 
@@ -63,7 +57,7 @@ public class RegisterServlet extends HttpServlet {
         
             if ( check == true ) {
                 session.setAttribute( "user", user);
-                request.setAttribute( "invalid", "The user name " + user.getUserName() + " is already taken." );
+                request.setAttribute( "invalid", "The username " + user.getUserName() + " is already taken." );
                 request.getRequestDispatcher( "register.jsp" ).forward( request, response );
                 return;
             }

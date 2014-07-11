@@ -21,6 +21,7 @@ public class Person implements Serializable{
     private String emailAddress;
     private String phoneNumber;
     private String birthday;
+    private String notes;
 
     /**
      * @return the firstName
@@ -65,6 +66,13 @@ public class Person implements Serializable{
     }
 
     /**
+     * @return the notes
+     */
+    public String getNotes() {
+        return notes;
+    }
+    
+    /**
      * @param firstName the name to set
      */
     public void setFirstName( String firstName ) {
@@ -105,5 +113,10 @@ public class Person implements Serializable{
     public void setBirthday( String birthday ) {
         this.birthday = birthday;
     }
-    
+     /**
+     * @param notes the notes to set
+     */
+    public void setNotes( String notes ) {
+        this.notes = notes;
+    }
 }
