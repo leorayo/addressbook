@@ -1,7 +1,10 @@
+/**
+ * This class will create a user with a username, password, and list of person
+ * attributes. 
+ */
 package edu.acc.capstone.addressbook;
 /**
- *
- * @author Rayo
+ * @author Leobardo Rayo
  */
 import java.io.*;
 import java.util.*;

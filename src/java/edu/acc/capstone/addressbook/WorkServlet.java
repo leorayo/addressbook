@@ -1,7 +1,17 @@
+/**
+ * This servlet will be in charge of receiving the parameters from the content
+ * page. It will be able search for a person by calling the search person
+ * method, if a person is found the user will be redirected to a display page.
+ * If the person is not found the user will be send to the content page with an
+ * error message. This servlet will also be able redirect the user to a add
+ * person page if the user selects to add a person. This servlet will also 
+ * handle adding that person by getting the parameters from the add person page.
+ * If the user wants to delete a person or update a person the servlet will send
+ * them to another servlet to deal with the request.  
+ */
 package edu.acc.capstone.addressbook;
 /**
- *
- * @author Rayo
+ * @author Leobardo Rayo
  */
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,9 +24,9 @@ public class WorkServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        //get the users current session
         HttpSession session = request.getSession();
-        
+        //get the parameters from the form and assign them to a string
         String firstName = request.getParameter( "firstName" );
         String lastName = request.getParameter( "lastName" );
         String addAnewPerson = request.getParameter( "addAnewPerson" );
@@ -25,12 +35,12 @@ public class WorkServlet extends HttpServlet {
         String deleted = null;
         String add = null;
         String update = null;
-       
+        //assign the parameters to the appropriate work string
         if ( work != null && work.equals( "search" )  ) search = work;
         if ( work != null && work.equals( "deleted" )) deleted = work;
         if ( work != null && work.equals( "add" ) ) add = work;
         if ( work != null && work.equals( "update" ) ) update = work;
-        
+        //check to see if the strings are null
         if ( search == null && deleted == null && add == null && addAnewPerson == null && update == null ){
             request.setAttribute( "firstName", firstName );
             request.setAttribute( "lastName", lastName );
@@ -44,10 +54,9 @@ public class WorkServlet extends HttpServlet {
         String phoneNumber = request.getParameter( "phoneNumber" );
         String birthday = request.getParameter( "birthday" );
         String notes = request.getParameter( "notes" );
-        //String addAnewPerson = request.getParameter( "addAnewPerson" );
-        
+        //gets the user from the context attribute
         User user = (User)request.getSession().getAttribute( "user" );
-               
+        //if the user chose search search for the person and display their information in the display jsp page    
         if ( search != null ) {
            Person person = new Person();
            PersonSearch myPerson = new PersonSearch();
@@ -64,11 +73,11 @@ public class WorkServlet extends HttpServlet {
            }
            
         }
+        //if the user chose delete make sure the person is in the users person list and delete the person
         else if ( deleted != null ) {
            Person person = new Person();
            PersonSearch myPerson = new PersonSearch();
            person = myPerson.search( firstName, lastName, user );
-           //ArrayList<Person> personList = user.getPersonList();
            if ( person == null ) {
                 request.setAttribute( "notFound", firstName + " " + lastName + " is not in your addressbook." );
                 session.setAttribute( "user", user );
@@ -83,6 +92,7 @@ public class WorkServlet extends HttpServlet {
                 return;
            }
         }
+        //if the user chose add send them to the addPerson jsp page to get the persons information
         else if ( add != null ) {
             request.setAttribute( "personFirstName", firstName );
             request.setAttribute( "personLastName", lastName );
@@ -90,16 +100,11 @@ public class WorkServlet extends HttpServlet {
             request.getRequestDispatcher( "addPerson.jsp" ).forward( request, response );
             return;
         }
+        //if the user chose update make sure the person is in the users person list and update the person
         else if ( update != null ) {
-            /*request.setAttribute( "personFirstName", firstName );
-            request.setAttribute( "personLastName", lastName );
-            session.setAttribute( "user", user );
-            request.getRequestDispatcher( "updatePerson.jsp" ).forward( request, response );
-            return;*/
-            Person person = new Person();
+           Person person = new Person();
            PersonSearch myPerson = new PersonSearch();
            person = myPerson.search( firstName, lastName, user );
-           //ArrayList<Person> personList = user.getPersonList();
            if ( person == null ) {
                 request.setAttribute( "notFound", firstName + " " + lastName + " is not in your addressbook." );
                 session.setAttribute( "user", user );
@@ -108,12 +113,12 @@ public class WorkServlet extends HttpServlet {
            }
            else {
                 session.setAttribute( "user", user );
-                session.setAttribute( "person", person); //!!!!!!!!!!!!!
+                session.setAttribute( "person", person);
                 request.getRequestDispatcher( "updatePerson.jsp" ).forward( request, response );
                 return;
            }
         }
-            
+        //if the user wants to add a person save the create person object in the users persons list   
         Person addPerson = new Person();
         addPerson.setFirstName( firstName );
         addPerson.setLastName( lastName );

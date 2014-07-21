@@ -1,18 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This will be a java bean class that will contain all the information about a
+ * person in the address book. 
+ *-First Name
+ *-Last Name
+ *-Address
+ *-Email Address
+ *-Phone Number
+ *-Birth Day
+ *-Special notes
  */
-
 package edu.acc.capstone.addressbook;
-
-import java.io.Serializable;
-
 /**
- *
- * @author Rayo
+ * @author Leobardo Rayo
  */
 import java.io.*;
+import java.io.Serializable;
 
 public class Person implements Serializable{
     private String firstName;

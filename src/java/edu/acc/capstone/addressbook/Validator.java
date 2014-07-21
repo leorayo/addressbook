@@ -1,14 +1,17 @@
+/**
+ * This class will be in charge of finding a user in the user list, and
+ * validating the user name and password to make sure that the user is registered.
+ */
 package edu.acc.capstone.addressbook;
 /**
- *
- * @author Rayo
+ * @author Leobardo Rayo
  */
 import java.util.*;
 
 public class Validator {
     private boolean check;
     private User current = null;
-    
+    //checks to see if the user is in registered list
     public boolean validate( User user, ListUsers listOfUsers ) {
         ArrayList<User> userList = listOfUsers.getUserList();
         
@@ -28,6 +31,7 @@ public class Validator {
                }
     return check;
     }
+    //checks to see if the user name is taken or not
     public boolean validateUser( User user, ListUsers listsOfUsers ) {
         ArrayList<User> userList = listsOfUsers.getUserList();
         
@@ -47,7 +51,7 @@ public class Validator {
                }
     return check;
     }
-    
+    //returns the user that was found in the list
     public User getCurrentUser() {
         return current;
     }
